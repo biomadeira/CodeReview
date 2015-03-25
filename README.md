@@ -1,5 +1,4 @@
-CodeReview
-##########
+## CodeReview
 
 This is the code I used as part of a monthly code review session in the [GJB group](http://www.compbio.dundee.ac.uk/)
 
