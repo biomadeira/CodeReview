@@ -63,14 +63,6 @@ if len(identifier) != 6:
 
 """
 There might be something up with your summary section of your JSON?
-
-  "SUMMARY": {
-      "UNIPROT_NAME": "MSTAVLENPGLGRKLSDFGQETSYIEDNCNQNGAISLIFSLKEEVGALAKVLRLFEENDVNLTHIESRPSRLKKDEYEFFTHLDKR
-      SLPALTNIIKILRHDIGATVHELSRDKKKDTVPWFPRTIQELDRFANQILSYGAELDADHPGFKDPVYRARRKQFADIAYNYRHGQPIPRVEYMEEEKKTWGT
-      VFKTLKSLYKTHACYEYNHIFPLLEKYCGFHEDNIPQLEDVSQFLQTCTGFRLRPVAGLLSSRDFLGGLAFRVFHCTQYIRHGSKPMYTPEPDICHELLGHVP
-      LFSDRSFAQFSQEIGLASLGAPDEYIEKLATIYWFTVEFGLCKQGDSIKAYGAGLLSSFGELQYCLSEKPKLLPLELEKTAIQNYTVTEFQPLYYVAESFND
-      AKEKVRNFAATIPRPFSVRYDPYTQRIEVLDNTQQLKILADSINSEIGILCSALQKIK" .......
-      
 I'm fairly certain that's not the Uniprot name? Also: Remind me to ask what the flash method does.
 """
 
@@ -79,15 +71,13 @@ If you require version dependant packages its a good idea to catch the errors re
 sensible fail that suggests that the version might be a problem, or better yet check the version of python 
 in the script at the start and fail gracefully if it is insufficient.
 Only really major problem is the use of catch-all try/excepts - these should not be used (except in very 
-extreme cases) - try/except is for catching specific erros, not replacing if/else. Thigo has the right of it.
+extreme cases) - try/except is for catching specific erros, not replacing if/else.
 Also, main_handler is kind of redundant. You can call class methods from the constructor (although I don't 
 know if this is considered bad style) so if these are going to be called all the time, every time, I'd do it there.
 No check on the input before it gets used as a string and then the value is checked to make sure its 6 
 chars long. What about if the input given doesn't have a string method (yes, it should be hey), and what 
 happens if you give it, say, int(123456)? Answer: “Loading UNIPROT ID 123456…, Error: UniProt identifiers 
 are usually 6-character long…” which is not a useful error in this case since the problem is that it isn't a 
-string rather than that it isn't 6 chars long. What about or [“P”,”0”,”0”,”4”,”3”,”9”]? “Loading 
-UNIPROT ID ['P', '0', '0', '4', '3', '9']… 404 http://www.uniprot.org/uniprot/['P', '0', '0', '4', '3', '9'].fasta 
-Warning: ['P', '0', '0', '4', '3', '9'].fasta not available for download.” Would be good practice to check 
+string rather than that it isn't 6 chars long. Would be good practice to check 
 that the input can be cast as a sensible-looking string before using it.
 """
