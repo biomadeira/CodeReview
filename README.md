@@ -20,6 +20,8 @@ A simple example of use if you want to see the all the steps and JSON output, wo
 
 otherwise simply run (it takes a bit to complete if the number of variants is big) `python main.py -i P00439 > output.json`
 
+To view the notebook live just [click here](http://nbviewer.ipython.org/github/biomadeira/CodeReview/blob/master/Code%20Review%20-%20Example.ipynb)
+
 ### Dependencies
 python 2.7+
 
